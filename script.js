@@ -2,24 +2,32 @@ console.log("LIVE")
 
 const url = "http://api.citybik.es/v2/networks/"
 const whatCity = "Washington, DC"
-// https://open.spotify.com/artist/0fTHKjepK5HWOrb2rkS5Em"
 
-var findNetwork = function(resObj, apiStartPoint){
+var findStation = function(networkObj, networkEndPoint){
+	console.log(networkEndPoint)
+	console.dir(networkObj.gbfs_href)
+}
+
+var findNetwork = function(apiObj, apiStartPoint){
 			// console.dir(resObj)
-			for (i = 0; i < resObj.networks.length; i++){
-				if(resObj.networks[i].location.city == whatCity){
-					console.dir(resObj.networks[i])
-					networkId = resObj.networks[i].id
+			for (i = 0; i < apiObj.networks.length; i++){
+				if (apiObj.networks[i].location.city == whatCity){
+					console.dir(apiObj.networks[i])
+					networkId = apiObj.networks[i].id
 					// console.log(networkId) 
 					// console.log(url + networkId)
 					networkUrl = apiStartPoint + networkId
+					console.log(networkUrl)
 
 					fetch(networkUrl)
 					.then(res => res.json())
-					.then(res => findNetwork(res))
-					.catch(err => console.log("ERROR", err))
+					.then(res => findStation(res, networkUrl))
+					.catch(err => console.log("No More Matches!\n", err))
 				} 
+
 			}
+
+
  
 }
 
@@ -30,5 +38,5 @@ bikes.addEventListener("click", function(eo){
 	fetch(url)
 	.then(res => res.json())
 	.then(res => findNetwork(res, url))
-	.catch(err => console.log("ERROR", err))
+	.catch(err => console.log("Acceptable ERROR\n", err))
 })
