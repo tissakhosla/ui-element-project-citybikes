@@ -3,6 +3,17 @@ console.log("LIVE")
 const url = "http://api.citybik.es/v2/networks/"
 const whatCity = "Washington, DC"
 
+var stationData = function(stationObj){
+	console.log("these are these 6 things urls\n")
+	// for(let i = 0; i < 6; i++){
+		console.dir(stationObj.data.en.feeds[1].url)
+		let data0 = stationObj.data.en.feeds[1].url
+		fetch(data0)
+			// .then(res => res.json())
+			.then(console.dir(res))
+			.catch(err => console.log("uh oh"), err)
+}
+
 var findStation = function(networkObj, networkEndPoint){
 	console.log("networkEndPoint\n" + networkEndPoint)
 	console.log("networkObj")
@@ -11,7 +22,8 @@ var findStation = function(networkObj, networkEndPoint){
 	// console.dir(networkObj.network.stations)
 	let mysteryObj = networkObj.network.stations
 	console.dir(mysteryObj)
-	// Logs all stations without bikes
+	
+	// Logs all station names without bikes
 	// for(let i = 0;i < mysteryObj.length; i++){
 	// 	if (mysteryObj[i].free_bikes === 0){
 	// 		console.dir(mysteryObj[i].name)
@@ -23,12 +35,14 @@ var findStation = function(networkObj, networkEndPoint){
 
 	fetch(stationUrl)
 		.then(res => res.json())
-		.then(res => console.log(res))
-		.catch(err => console.log("where we at?!\n", err))
+		.then(res => stationData(res))
+		.catch(err => console.log("ERROR in fetch 3\n", err))
 }
 
+
+
 var findNetwork = function(apiObj, apiStartPoint){
-			// console.dir(resObj)
+			
 			for (i = 0; i < apiObj.networks.length; i++){
 				if (apiObj.networks[i].location.city === whatCity){
 					console.log("apiObj")
@@ -54,6 +68,7 @@ bikes.addEventListener("click", function(eo){
 
 	fetch(url)
 		.then(res => res.json())
+		// .then(console.log(res))
 		.then(res => findNetwork(res, url))
-		.catch(err => console.log("Acceptable ERROR\n", err))
+		.catch(err => console.log("ERROR in fetch 1\n", err))
 })
