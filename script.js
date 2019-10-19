@@ -7,8 +7,19 @@ var findStation = function(networkObj, networkEndPoint){
 	console.log("networkEndPoint\n" + networkEndPoint)
 	console.log("networkObj")
 	console.dir(networkObj)
-	console.dir(networkObj.network.gbfs_href)
+	console.log("WHAT IS THIS??")
+	// console.dir(networkObj.network.stations)
+	let mysteryObj = networkObj.network.stations
+	console.dir(mysteryObj)
+	// Logs all stations without bikes
+	// for(let i = 0;i < mysteryObj.length; i++){
+	// 	if (mysteryObj[i].free_bikes === 0){
+	// 		console.dir(mysteryObj[i].name)
+	// 	}
+	
+	// console.dir(networkObj.network.gbfs_href)
 	let stationUrl = networkObj.network.gbfs_href
+	console.log(stationUrl)	
 
 	fetch(stationUrl)
 		.then(res => res.json())
@@ -35,7 +46,6 @@ var findNetwork = function(apiObj, apiStartPoint){
 				} 
 
 			}
- 
 }
 
 bikes = document.querySelector("button")
