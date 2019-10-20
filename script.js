@@ -17,9 +17,10 @@ var findStation = function(networkObj, streetSearch){
 	let stationArray = networkObj.network.stations
 	console.dir(stationArray)
 
-	for(let i = 0; i < stationArray.length; i++){	
+	for(let i = 0; i < stationArray.length; i++){
+			
 
-		if(stationArray[i].name.includes(streetSearch)) {
+		if(stationArray[i].name.toUpperCase().includes(streetSearch.toUpperCase())) {
 			let row = document.createElement("tr")
 			table.appendChild(row)
 			
