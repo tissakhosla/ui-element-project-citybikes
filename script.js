@@ -17,6 +17,25 @@ var findStation = function(networkObj, streetSearch){
 	let stationArray = networkObj.network.stations
 	console.dir(stationArray)
 
+	// let table = document.createElement("table")
+	// body.appendChild(table)
+
+	// let nameHead = document.createElement("th")
+	// table.appendChild(nameHead)
+	// nameHead.innerHTML = "Name"
+	// let freeHead = document.createElement("th")
+	// table.appendChild(freeHead)
+	// freeHead.innerHTML = "Bikes Available"
+	// let emptyHead = document.createElement("th")
+	// table.appendChild(emptyHead)
+	// emptyHead.innerHTML = "Docks Available"
+	// let latHead = document.createElement("th")
+	// table.appendChild(latHead)
+	// latHead.innerHTML = "Latitude"
+	// let longHead = document.createElement("th")
+	// table.appendChild(longHead)
+	// longHead.innerHTML = "Longitude"
+
 	for(let i = 0; i < stationArray.length; i++){
 			
 
