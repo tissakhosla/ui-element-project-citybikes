@@ -4,40 +4,48 @@ const url = "http://api.citybik.es/v2/networks/"
 const whatCity = "Washington, DC"
 const body = document.querySelector("body")
 let network
-let table
+// let table 
 
-form = document.querySelector("form")
-searchText = document.querySelector(".searchtext")
+var removeTable = function(){
+	table.remove()
+}
+
+var search = function(){}
+
+let form = document.querySelector("form")
+let searchText = document.querySelector(".searchtext")
+
 
 form.addEventListener("submit", function(eo){
 	eo.preventDefault()
-
-
-	table = document.createElement("table")
-	console.dir(table)
+	const body = document.querySelector("body")
+	// if (body.table.children.length > 0){table.remove()}
+	let searchResults = document.createElement("table")
+	console.dir(searchResults)
 	
-	body.appendChild(table)
+	body.appendChild(searchResults)
 
 	let nameHead = document.createElement("th")
-	table.appendChild(nameHead)
+	searchResults.appendChild(nameHead)
 	nameHead.innerHTML = "Name"
 	let freeHead = document.createElement("th")
-	table.appendChild(freeHead)
+	searchResults.appendChild(freeHead)
 	freeHead.innerHTML = "Bikes Available"
 	let emptyHead = document.createElement("th")
-	table.appendChild(emptyHead)
+	searchResults.appendChild(emptyHead)
 	emptyHead.innerHTML = "Docks Available"
 	let latHead = document.createElement("th")
-	table.appendChild(latHead)
+	searchResults.appendChild(latHead)
 	latHead.innerHTML = "Latitude"
 	let longHead = document.createElement("th")
-	table.appendChild(longHead)
+	searchResults.appendChild(longHead)
 	longHead.innerHTML = "Longitude"
-	
-	findStation(network, searchText.value)
+
+	findStation(network, searchText.value, searchResults)
+
 })
 
-var findStation = function(networkObj, streetSearch){
+var findStation = function(networkObj, streetSearch, table){
 	let stationArray = networkObj.network.stations
 	console.dir(stationArray)
 
