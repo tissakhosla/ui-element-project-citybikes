@@ -2,7 +2,7 @@ console.log("LIVE")
 
 const url = "http://api.citybik.es/v2/networks/"
 const whatCity = "Washington, DC"
-const table = document.querySelector("table")
+const body = document.querySelector("body")
 let network
 
 form = document.querySelector("form")
@@ -21,6 +21,11 @@ var findStation = function(networkObj, streetSearch){
 			
 
 		if(stationArray[i].name.toUpperCase().includes(streetSearch.toUpperCase())) {
+			let table = document.createElement("table")
+			body.appendChild(table)
+			let nameHead = document.createElement("th")
+			table.appendChild(nameHead)
+			nameHead.innerHTML = "Name"
 			let row = document.createElement("tr")
 			table.appendChild(row)
 			
