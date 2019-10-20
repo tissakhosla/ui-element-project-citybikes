@@ -3,19 +3,26 @@ console.log("LIVE")
 const url = "http://api.citybik.es/v2/networks/"
 const whatCity = "Washington, DC"
 const table = document.querySelector("table")
+let network
 
-var findStation = function(networkObj, networkEndPoint){
-	console.log("networkEndPoint\n" + networkEndPoint)
-	console.log("networkObj")
-	console.dir(networkObj)
-	console.log("stationArray")
+form = document.querySelector("form")
+searchText = document.querySelector(".searchtext")
+
+form.addEventListener("submit", function(eo){
+	eo.preventDefault()
+	findStation(network, searchText.value)
+})
+
+var findStation = function(networkObj, streetSearch){
 	let stationArray = networkObj.network.stations
 	console.dir(stationArray)
-	for(let i = 0; i < stationArray.length; i++){
-		let search = "14th"
-		if(stationArray[i].name == search)
+
+	for(let i = 0; i < stationArray.length; i++){	
+
+		if(stationArray[i].name.includes(streetSearch)) {
 			let row = document.createElement("tr")
 			table.appendChild(row)
+			
 			let rowName = document.createElement("td")
 			row.appendChild(rowName)
 			rowName.innerHTML = stationArray[i].name
@@ -34,16 +41,8 @@ var findStation = function(networkObj, networkEndPoint){
 			let rowTime = document.createElement("td")
 			row.appendChild(rowTime)
 			rowTime.innerHTML = stationArray[i].timestamp
-		}
+		} 
 	}
-
-
-	// Logs all station names without bikes
-	// for(let i = 0;i < mysteryObj.length; i++){
-	// 	if (mysteryObj[i].free_bikes === 0){
-	// 		console.dir(mysteryObj[i].name)
-	// 	}
-	// console.dir(networkObj.network.gbfs_href)
 }
 
 var findNetwork = function(apiObj, apiStartPoint){			
@@ -59,19 +58,14 @@ var findNetwork = function(apiObj, apiStartPoint){
 
 			fetch(networkUrl)
 				.then(res => res.json())
-				.then(res => findStation(res, networkUrl))
+				.then(res => network = res)
 				.catch(err => console.log("No More Matches!\n", err))
 		} 
 	}
 }
 
-bikes = document.querySelector("button")
-bikes.addEventListener("click", function(eo){
-	eo.preventDefault()
-
-	fetch(url)
+fetch(url)
 		.then(res => res.json())
 		// .then(console.log(res))
 		.then(res => findNetwork(res, url))
 		.catch(err => console.log("ERROR in fetch 1\n", err))
-})
