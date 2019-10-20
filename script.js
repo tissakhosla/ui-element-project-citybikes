@@ -4,12 +4,36 @@ const url = "http://api.citybik.es/v2/networks/"
 const whatCity = "Washington, DC"
 const body = document.querySelector("body")
 let network
+let table
 
 form = document.querySelector("form")
 searchText = document.querySelector(".searchtext")
 
 form.addEventListener("submit", function(eo){
 	eo.preventDefault()
+
+
+	table = document.createElement("table")
+	console.dir(table)
+	
+	body.appendChild(table)
+
+	let nameHead = document.createElement("th")
+	table.appendChild(nameHead)
+	nameHead.innerHTML = "Name"
+	let freeHead = document.createElement("th")
+	table.appendChild(freeHead)
+	freeHead.innerHTML = "Bikes Available"
+	let emptyHead = document.createElement("th")
+	table.appendChild(emptyHead)
+	emptyHead.innerHTML = "Docks Available"
+	let latHead = document.createElement("th")
+	table.appendChild(latHead)
+	latHead.innerHTML = "Latitude"
+	let longHead = document.createElement("th")
+	table.appendChild(longHead)
+	longHead.innerHTML = "Longitude"
+	
 	findStation(network, searchText.value)
 })
 
@@ -17,34 +41,10 @@ var findStation = function(networkObj, streetSearch){
 	let stationArray = networkObj.network.stations
 	console.dir(stationArray)
 
-	// let table = document.createElement("table")
-	// body.appendChild(table)
-
-	// let nameHead = document.createElement("th")
-	// table.appendChild(nameHead)
-	// nameHead.innerHTML = "Name"
-	// let freeHead = document.createElement("th")
-	// table.appendChild(freeHead)
-	// freeHead.innerHTML = "Bikes Available"
-	// let emptyHead = document.createElement("th")
-	// table.appendChild(emptyHead)
-	// emptyHead.innerHTML = "Docks Available"
-	// let latHead = document.createElement("th")
-	// table.appendChild(latHead)
-	// latHead.innerHTML = "Latitude"
-	// let longHead = document.createElement("th")
-	// table.appendChild(longHead)
-	// longHead.innerHTML = "Longitude"
-
 	for(let i = 0; i < stationArray.length; i++){
-			
 
 		if(stationArray[i].name.toUpperCase().includes(streetSearch.toUpperCase())) {
-			let table = document.createElement("table")
-			body.appendChild(table)
-			let nameHead = document.createElement("th")
-			table.appendChild(nameHead)
-			nameHead.innerHTML = "Name"
+			
 			let row = document.createElement("tr")
 			table.appendChild(row)
 			
