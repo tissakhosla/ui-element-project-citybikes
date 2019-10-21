@@ -2,18 +2,26 @@ body{
     background: url(background.jpg);
     background-repeat: no-repeat;
     max-height: 100vh;
+    display: flex;
+    flex-direction: row;
     
 }
 
-main {
+.page {
     background: rgba(23, 1, 1, 0.283);
     /* max-height: 80vh; */
     margin: 50px 0px 50px 50px;
-    width: 420px;
+    width: 50vh;
     padding: 30px;
     border-radius: 10px;
-
 }
+
+.myChart {
+    height: 300px;
+    width: 300px;
+    background: green;
+}
+
 .searchtext {
     background: rgba(255, 255, 255, .5);
     font-size: 20px;
