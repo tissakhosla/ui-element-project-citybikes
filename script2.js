@@ -18,6 +18,7 @@ function bikesFetch(response) {
         if(stationArray[i].name.toUpperCase().includes(searchText.value.toUpperCase())){
             console.log(stationArray[i].name)
             let stationName = document.createElement("div")
+            stationName.setAttribute("class", "eachStation")
             results.appendChild(stationName)
             stationName.innerHTML = stationArray[i].name
 
@@ -29,7 +30,7 @@ function bikesFetch(response) {
                 }
 
                 let stationData = document.createElement("div")
-                
+                stationData.setAttribute("class", "stationData")
                 let dataFree = document.createElement("div")
                 dataFree.setAttribute("id", "inline")
                 dataFree.innerHTML = "Bikes: " + stationArray[i].free_bikes
