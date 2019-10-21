@@ -13,14 +13,18 @@ function bikesFetch(response) {
     main.appendChild(results)
 
     let searchText = document.querySelector(".searchtext")
-
+    let j = 0
     for(let i = 0; i < stationArray.length; i++){
+        
+
         if(stationArray[i].name.toUpperCase().includes(searchText.value.toUpperCase())){
             console.log(stationArray[i].name)
             let stationName = document.createElement("div")
             stationName.setAttribute("class", "eachStation")
             results.appendChild(stationName)
-            stationName.innerHTML = stationArray[i].name
+            j++
+            stationName.innerHTML = j + ". " + stationArray[i].name
+            
 
             stationName.addEventListener("click", function(eo){
                 let myDiv = document.getElementById("bikeResults")
@@ -43,7 +47,7 @@ function bikesFetch(response) {
                 stationData.setAttribute("id", "bikeResults")
 
 
-                stationName.appendChild(stationData)                
+                stationName.appendChild(stationData)          
             })
         }
     }
