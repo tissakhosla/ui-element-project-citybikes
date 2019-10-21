@@ -1,7 +1,3 @@
-// console.log("Wea rel ive")
-
-// const url3 = "http://api.citybik.es/v2/networks/capital-bikeshare"
-
 function bikesFetch(response) {
     let stationArray = response.network.stations
     let myObj = document.getElementById("searchResults")
@@ -21,8 +17,33 @@ function bikesFetch(response) {
     for(let i = 0; i < stationArray.length; i++){
         if(stationArray[i].name.toUpperCase().includes(searchText.value.toUpperCase())){
             console.log(stationArray[i].name)
-            results.appendChild(document.createElement("div")).innerHTML = stationArray[i].name
+            let stationName = document.createElement("div")
+            results.appendChild(stationName)
+            stationName.innerHTML = stationArray[i].name
+
+            stationName.addEventListener("click", function(eo){
+                let myDiv = document.getElementById("bikeResults")
     
+                if(myDiv != null){
+                    myDiv.remove()
+                }
+
+                let stationData = document.createElement("div")
+                
+                let dataFree = document.createElement("div")
+                dataFree.setAttribute("id", "inline")
+                dataFree.innerHTML = "Bikes: " + stationArray[i].free_bikes
+                let dataEmpty = document.createElement("div")
+                dataEmpty.setAttribute("id", "inline")
+                dataEmpty.innerHTML = "Docks: " + stationArray[i].empty_slots
+
+                stationData.appendChild(dataFree)
+                stationData.appendChild(dataEmpty)
+                stationData.setAttribute("id", "bikeResults")
+
+
+                stationName.appendChild(stationData)                
+            })
         }
     }
 }
