@@ -10,3 +10,16 @@ service, Capitol BikeShare, run by Motivate Inc.
 The user will search for a street in the DMV area to search for bikeshare station intersections on that street. 
 The user can then select one and see information about that particular station. 
 
+## Challenges
+0. Figuring out how to eliminate previous search results. 
+0. Scope issues with fetch, and when to fetch. Seems to be better to do the fetch only when neccessary as opposed to at the beginning?
+0. Charts :()
+0. Other APIs
+
+## API
+http://api.citybik.es/v2/
+Gathers data from every bikeshare service/company in the world, with mostly consistent inormation across the cities. 
+This one focuses on Washington, DC. 
+
+## -- Screenshots -- 
+![Page on load:](Page Load.png)

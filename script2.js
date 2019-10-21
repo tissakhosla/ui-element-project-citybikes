@@ -13,20 +13,15 @@ function bikesFetch(response) {
     main.appendChild(results)
 
     let searchText = document.querySelector(".searchtext")
-    let j = 0
     for(let i = 0; i < stationArray.length; i++){
 
-    function search(){
-        stationArray[i].name.toUpperCase().includes(searchText.value.toUpperCase())
-    } 
-        if(search){
+        if(stationArray[i].name.toUpperCase().includes(searchText.value.toUpperCase())){
             console.log(stationArray[i].name)
             let stationName = document.createElement("div")
             stationName.setAttribute("class", "eachStation")
             results.appendChild(stationName)
             
-            j++
-            stationName.innerHTML = j + ". " + stationArray[i].name
+            stationName.innerHTML = stationArray[i].name
             
             stationName.addEventListener("click", function(eo){
                 let myDiv = document.getElementById("bikeResults")
@@ -49,6 +44,7 @@ function bikesFetch(response) {
                 stationData.setAttribute("id", "bikeResults")
 
                 stationName.appendChild(stationData) 
+                    
             }) 
         }
     }
@@ -67,7 +63,6 @@ function buttonClick(eo){
         .then(bikesFetch)
         .catch(fetchFail)
 }
-
 
 console.log("Wea rel ive")
 
