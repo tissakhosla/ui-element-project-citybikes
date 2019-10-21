@@ -3,7 +3,7 @@ console.log("LIVE")
 const url = "http://api.citybik.es/v2/networks/"
 const whatCity = "Washington, DC"
 const body = document.querySelector("body")
-let network
+// let network
 // let table 
 
 var removeTable = function(){
