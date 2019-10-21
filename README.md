@@ -22,4 +22,8 @@ Gathers data from every bikeshare service/company in the world, with mostly cons
 This one focuses on Washington, DC. 
 
 ## -- Screenshots -- 
+# On load:
 ![Page on load](page_load.png)
+
+# On Clicks
+![On Clicks](on_clicks.png)
