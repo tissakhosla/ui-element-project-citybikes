@@ -23,9 +23,9 @@ This one focuses on Washington, DC.
 
 ## -- Screenshots -- 
 # On load:
-![Page on load](page_load.png)
+![Page on load](./images/page_load.png)
 
 # On Clicks
-![On Clicks](on_clicks.png)
+![On Clicks](./images/on_clicks.png)
 
 testing deployment Sun 12/8/2019 7:40PM

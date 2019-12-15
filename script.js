@@ -55,7 +55,7 @@ function fetchFail(response) {
 
 function buttonClick(eo){
     eo.preventDefault()
-    const url3 = "http://api.citybik.es/v2/networks/capital-bikeshare"
+    const url3 = "https://api.citybik.es/v2/networks/capital-bikeshare"
     
     fetch(url3)
         .then(res => res.json())
